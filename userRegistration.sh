@@ -1,19 +1,27 @@
 #!/bin/bash -x
 shopt -s extglob
 #function to take firstname as an input
-function input()
+function inputForFirstName()
 {
- echo "Enter the FirstName"
+ printf "Enter the FirstName"
  read name
- firstName $name
+ expressionForNameCheck $name
 }
 
-#function to validate firstname with first letter being capital followed by minimum 3 characters
-function firstName
+#function to take lastname as an input
+function inputForLastName()
+{
+ printf "Enter the LastName"
+ read lastname
+ expressionForNameCheck $lastname
+}
+
+#function to validate firstname and lastname with first letter being capital followed by minimum 3 characters
+function expressionForNameCheck()
 {
  word=$1
- firstNameExpression="^[A-Z]{1}[a-z]{2,}$"
- if [[ $word =~ $firstNameExpression ]]
+ NameExpression=^[A-Z]{1}[a-z]{2,12}$
+ if [[ $word =~ $NameExpression ]]
  then
   echo Valid Name;
  else
@@ -21,4 +29,5 @@ function firstName
  fi
 }
 
-input
+inputForFirstName
+inputForLastName
