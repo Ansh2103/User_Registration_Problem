@@ -37,7 +37,7 @@ function inputPassword
 {
  printf "Enter the password for verification"
  read password
- passwordValidationCheckUC5 $password
+ passwordValidationCheck $password
 }
 
 #function to validate firstname and lastname with first letter being capital followed by minimum 3 characters
@@ -80,10 +80,10 @@ function mobileFormatValidationCheck()
 }
 
 #function to check for password validation
-function passwordValidationCheckUC5
+function passwordValidationCheck
 {
  emailPassword=$1
- emailPasswordValidation="^([a-zA-Z0-9]{8,16})$"
+ emailPasswordValidation="^(?=.*[a-z])(?=.*[A-Z])(?=.{8,}).*$"
   if [[ $emailPassword =~ $emailPasswordValidation ]]
  then
   echo Valid Password;
