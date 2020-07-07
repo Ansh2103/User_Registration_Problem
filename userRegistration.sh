@@ -24,11 +24,20 @@ function inputForEmail()
  emailValidationCheck $address
 }
 
+#function to take mobile number as an input
 function inputForMobileNumber
 {
  printf "Enter the Mobile Number in the described format"
  read mobileNumber
  mobileFormatValidationCheck $mobileNumber
+}
+
+#function to take password as input
+function inputPassword
+{
+ printf "Enter the password for verification"
+ read password
+ passwordValidationCheckUC5 $password
 }
 
 #function to validate firstname and lastname with first letter being capital followed by minimum 3 characters
@@ -70,7 +79,21 @@ function mobileFormatValidationCheck()
  fi
 }
 
+#function to check for password validation
+function passwordValidationCheckUC5
+{
+ emailPassword=$1
+ emailPasswordValidation="^([a-zA-Z0-9]{8,16})$"
+  if [[ $emailPassword =~ $emailPasswordValidation ]]
+ then
+  echo Valid Password;
+ else
+  echo Invalid Password;
+ fi
+}
+
 inputForFirstName
 inputForLastName
 inputForEmail
 inputForMobileNumber
+inputPassword
