@@ -83,7 +83,7 @@ function mobileFormatValidationCheck()
 function passwordValidationCheck
 {
  emailPassword=$1
- emailPasswordValidation="^(?=.*[a-z])(?=.*[A-Z])(?=.{8,}).*$"
+ emailPasswordValidation="^(?=.+[a-z])(?=.+[0-9])(?=.+[A-Z])(?=.{8,}).+$"
   if [[ $emailPassword =~ $emailPasswordValidation ]]
  then
   echo Valid Password;
